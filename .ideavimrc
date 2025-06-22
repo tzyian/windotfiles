@@ -1,0 +1,200 @@
+" .ideavimrc is a configuration file for IdeaVim plugin. It uses
+"   the same commands as the original .vimrc configuration.
+" You can find a list of commands here: https://jb.gg/h38q75
+" Find more examples here: https://jb.gg/share-ideavimrc
+
+" Source your _vimrc
+" source ~/_vimrc
+
+let mapleader = " "
+
+" ========================================================
+" ======================= Options ========================
+" ========================================================
+
+set scrolloff=5
+set linenumber
+set showmode
+set showcmd
+
+" Search options
+set smartcase
+set incsearch
+set hlsearch
+set wrapscan
+
+
+set notimeout
+
+" Clipboard options
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+" Smart join using JetBrains
+set ideajoin
+set ideamarks
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" ========================================================
+" ======================= Plugins =======================
+" ========================================================
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = "250"
+
+Plug 'tpope/vim-commentary'
+Plug 'preservim/nerdtree'
+" Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
+set which-key
+set mini-ai
+
+" Which-key mappings
+let g:WhichKeyDesc_reloadconfig = "\r Reload IdeaVim configuration"
+
+" ============================================================
+" ======================= Key Mappings =======================
+" ============================================================
+
+WhichKeyDesc_reloadconfig <C-s> a:ide
+sethandler <C-v> a:ide
+sethandler <C-f> a:ide
+sethandler <C-c> x:ide
+
+" Tab Navigation
+nnoremap <C-n> :tabnext<CR>
+nnoremap <C-p> :tabprevious<CR>
+nnoremap <TAB> :tabnext<CR>
+nnoremap <s-TAB> :tabprevious<CR>
+
+" Reset yank to yank to end of line
+nnoremap Y y$
+
+" Delete single char without yanking
+nnoremap x "_x
+nnoremap <Delete> "_x
+
+" Panel navigation
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Move lines
+map <A-k> <Action>(MoveLineUp)
+map <A-j> <Action>(MoveLineDown)
+map <A-h> <Action>(EditorUnindentSelection)
+map <A-l> <Action>(EditorIndentLineOrSelection)
+
+map <C-Left> <Action>(MaximizeEditorInSplit)
+vmap p P
+
+" map <leader>j <Action>(EditorJoinLines)
+
+" Jump between methods
+map [[ <Action>(MethodUp)
+map ]] <Action>(MethodDown)
+
+" Popup navigation
+" Not working!!!
+" map <C-j> <Action>(PopupMenu-selectNext)
+" map <C-k> <Action>(PopupMenu-selectPrev)
+
+" Save
+nnoremap <leader>w :w<CR>
+
+" Easy visual indentation
+vnoremap < <gv
+vnoremap > >gv
+
+" Easymotion
+map <leader><Tab> <Action>(AceAction)
+
+" Open NERDTree (use q to exit)
+map <leader>n :NERDTreeToggle<CR>
+
+" Telescope
+" let g:WhichKeyDesc_find = "<Leader>f Find"
+map <leader><leader> <Action>(RecentFiles)
+map <leader>fg <Action>(SearchEverywhere) " Also shift-shift
+map <leader>ff <Action>(GotoFile) " Also shift-shift
+map <leader>fc <Action>(FindInPath) " Ctrl-Shift-F
+map <leader>fl <Action>(RecentLocations)
+map <leader>fs <Action>(NewScratchFile)
+
+" Go to code
+nmap <leader>gr <Action>(ShowUsages)
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>gt <Action>(GotoTypeDeclaration)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gs <Action>(GotoSuperMethod)
+nmap <leader>gT <Action>(GotoTest)
+nmap <leader>gh <Action>(CIDR.Lang.SwitchHeaderSource)
+nmap gr <Action>(ShowUsages)
+nmap gd <Action>(GotoDeclaration)
+nmap gt <Action>(GotoTypeDeclaration)
+nmap gi <Action>(GotoImplementation)
+nmap gs <Action>(GotoSuperMethod)
+nmap gT <Action>(GotoTest)
+
+" Diagnostics
+map <leader>e <Action>(ShowErrorDescription)
+map [e <Action>(GotoPreviousError)
+map ]e <Action>(GotoNextError)
+
+" UndoTree
+map <leader>u  <Action>(LocalHistory.ShowHistory)
+
+map <leader><Left>  <Action>(MoveElementRight)
+map <leader><Right>  <Action>(MoveElementRight)
+
+" Outline
+" Not working
+" nnoremap <leader>h <action>(CallHierarchy)
+" nnoremap <leader>o <action>(FileStructurePopup)
+
+" Disable highlight
+nmap <Esc> :noh<CR>
+
+" Code
+map <leader>cr <Action>(RenameElement)
+map <leader>cq <Action>(Refactorings.QuickListPopupAction)
+map <leader>cf <Action>(ReformatCode) " Also Ctrl-Alt-L
+map <leader>co <Action>(OptimizeImports)
+map <leader>ca <Action>(ShowIntentionActions)
+
+" Git options
+map <leader>hc <Action>(CheckinProject)
+map <leader>hs <Action>(ActivateVersionControlToolWindow)
+map <leader>hb <Action>(Git.Branches)
+nmap ]h <Action>(VcsShowNextChangeMarker)
+nmap [h <Action>(VcsShowPrevChangeMarker)
+
+" debug
+nmap <leader>dc <Action>(ContextDebug)
+nmap <leader>dx <Action>(Debug)
+nmap <leader>db <Action>(ToggleLineBreakpoint)
+nmap <leader>de <Action>(EditBreakpoint)
+nmap <leader>dv <Action>(ViewBreakpoints)
+
+" Terminal
+map <leader>t <Action>(ActivateTerminalToolWindow)
+map <c-t> <Action>(Terminal.OpenInTerminal)
+
+
+"" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
+" To find actions, turn on IdeaVim: track action Ids within shift-shift,
+" Or type :actionlist pattern
+"" Map \r to the Reformat Code action
+"map \r <Action>(ReformatCode)
+
+"" Map <leader>d to start debug
+"map <leader>d <Action>(Debug)
+
+"" Map \b to toggle the breakpoint on the current line
+"map \b <Action>(ToggleLineBreakpoint)
+
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
