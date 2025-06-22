@@ -1,0 +1,270 @@
+// Place your key bindings in this file to override the defaults
+[
+  // mini.move (more indent aware than vscode inbuilt)
+  {
+    "command": "vscode-neovim.send",
+    "key": "alt+h",
+    "when": "editorTextFocus && neovim.mode != insert",
+    "args": "<A-h>",
+  },
+  {
+    "command": "vscode-neovim.send",
+    "key": "alt+j",
+    "when": "editorTextFocus && neovim.mode != insert",
+    "args": "<A-j>",
+  },
+  {
+    "command": "vscode-neovim.send",
+    "key": "alt+k",
+    "when": "editorTextFocus && neovim.mode != insert",
+    "args": "<A-k>",
+  },
+  {
+    "command": "vscode-neovim.send",
+    "key": "alt+l",
+    "when": "editorTextFocus && neovim.mode != insert",
+    "args": "<A-l>",
+  },
+  // Removed this to scroll using ctrl+D
+  {
+    "key": "ctrl+d",
+    "command": "-editor.action.addSelectionToNextFindMatch",
+    "when": "editorFocus"
+  },
+  // which key
+  {
+    "key": "ctrl+space",
+    "command": "whichkey.show",
+    "when": "editorTextFocus && neovim.mode == 'normal'"
+  },
+  // Enable copy to work
+  {
+    "key": "ctrl+c",
+    "command": "editor.action.clipboardCopyWithSyntaxHighlightingAction"
+  },
+  // Navigate by tab rather than frequency
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.previousEditor"
+  },
+  // Terminal keybindings
+  {
+    "key": "ctrl+tab",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "ctrl+pagedown",
+    "command": "-workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "ctrl+shift+tab",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "ctrl+pageup",
+    "command": "-workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalIsOpen && terminalFocus"
+  },
+  {
+    "key": "ctrl+q",
+    "command": "workbench.action.terminal.kill",
+    "when": "terminalIsOpen && terminalFocus"
+  },
+  {
+    // Decrease editor height
+    "key": "ctrl+up",
+    "command": "workbench.action.decreaseViewHeight",
+    "when": "editorTextFocus && (vim.active || neovim.mode == 'normal')"
+  },
+  {
+    // Increase editor height
+    "key": "ctrl+down",
+    "command": "workbench.action.increaseViewHeight",
+    "when": "editorTextFocus && (vim.active || neovim.mode == 'normal')"
+  },
+  {
+    // Decrease editor width
+    "key": "ctrl+left",
+    "command": "workbench.action.decreaseViewWidth",
+    "when": "editorTextFocus && (vim.active || neovim.mode == 'normal')"
+  },
+  {
+    // Increase editor width
+    "key": "ctrl+right",
+    "command": "workbench.action.increaseViewWidth",
+    "when": "editorTextFocus && (vim.active || neovim.mode == 'normal')"
+  },
+  // vscode vim binding
+  {
+    // enable copy
+    "key": "ctrl+c",
+    "command": "-extension.vim_ctrl+c",
+    "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
+  },
+  {
+    // Move lines down
+    "key": "alt+j",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !editorReadonly && vim.active"
+  },
+  {
+    // Move lines up
+    "key": "alt+k",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly && vim.active"
+  },
+  {
+    // Indent
+    "key": "alt+l",
+    "command": "editor.action.indentLines",
+    "when": "editorTextFocus && !editorReadonly && vim.active"
+  },
+  {
+    // Outdent
+    "key": "alt+h",
+    "command": "editor.action.outdentLines",
+    "when": "editorTextFocus && !editorReadonly && vim.active"
+  },
+  // Scroll suggestion window using tab
+  {
+    "key": "tab",
+    "command": "-acceptSelectedSuggestion",
+    "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "tab",
+    "command": "selectNextSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus && !inSnippetMode"
+  },
+  {
+    "key": "shift+tab",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus && !inSnippetMode"
+  },
+  {
+    "key": "enter",
+    "command": "acceptAlternativeSelectedSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && textInputFocus && textInputFocus"
+  },
+  // scroll within hover window
+  {
+    "key": "h",
+    "command": "editor.action.scrollLeftHover",
+    "when": "editorHoverFocused"
+  },
+  {
+    "key": "j",
+    "command": "editor.action.scrollDownHover",
+    "when": "editorHoverFocused"
+  },
+  {
+    "key": "k",
+    "command": "editor.action.scrollUpHover",
+    "when": "editorHoverFocused"
+  },
+  {
+    "key": "l",
+    "command": "editor.action.scrollRightHover",
+    "when": "editorHoverFocused"
+  },
+  // Explorer window
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "x",
+    "command": "filesExplorer.cut",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "y",
+    "command": "filesExplorer.copy",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+  },
+  {
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  // Navigate menus
+  {
+    "key": "tab",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "shift+tab",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "tab",
+    "command": "selectNextCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "shift+tab",
+    "command": "selectPrevCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  // Use vscode Find rather than scroll
+  {
+    "key": "ctrl+f",
+    "command": "-extension.vim_ctrl+f",
+    "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-extension.vim_ctrl+b",
+    "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "-editor.action.startFindReplaceAction",
+    "when": "editorFocus || editorIsOpen"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-extension.vim_ctrl+p",
+    "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+  },
+  {
+    "key": "shift+tab",
+    "command": "-extension.vim_shift+tab",
+    "when": "editorTextFocus && vim.active && !inDebugRepl && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+v",
+    "command": "-extension.vim_ctrl+v",
+    "when": "editorTextFocus && vim.active && vim.use<C-v> && !inDebugRepl"
+  }
+]
