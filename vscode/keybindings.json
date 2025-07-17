@@ -31,13 +31,6 @@
     "command": "-editor.action.addSelectionToNextFindMatch",
     "when": "editorFocus"
   },
-  // which key
-  {
-    "key": "ctrl+space",
-    "command": "whichkey.show",
-    "when": "editorTextFocus && neovim.mode == 'normal'"
-  },
-  // Enable copy to work
   {
     "key": "ctrl+c",
     "command": "editor.action.clipboardCopyWithSyntaxHighlightingAction"
@@ -266,5 +259,15 @@
     "key": "ctrl+v",
     "command": "-extension.vim_ctrl+v",
     "when": "editorTextFocus && vim.active && vim.use<C-v> && !inDebugRepl"
-  }
+  },
+  {
+    "key": "q",
+    "command": "workbench.action.closeSidebar",
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+  },
+  {
+    "key": "space",
+    "command": "whichkey.show",
+    "when": "(editorTextFocus && neovim.mode == 'normal') || (editorTextFocus && neovim.mode == 'visual')"
+  },
 ]

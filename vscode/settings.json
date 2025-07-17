@@ -9,7 +9,8 @@
     "plaintext": true,
     "markdown": true,
     "scminput": false,
-    "jsonc": true
+    "jsonc": false,
+    "haskell": true
   },
   "haskell.manageHLS": "GHCup",
   "[json]": {
@@ -28,7 +29,6 @@
   "editor.tabSize": 2,
   "rust-analyzer.cargo.buildScripts.overrideCommand": null,
   "editor.formatOnSave": true,
-  "python.defaultInterpreterPath": "C:\\Users\\Ian\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
   "notebook.lineNumbers": "on",
   "breadcrumbs.enabled": true,
   "notebook.formatOnSave.enabled": true,
@@ -116,7 +116,6 @@
   "gitlens.hovers.currentLine.over": "line",
   "dotnetAcquisitionExtension.enableTelemetry": false,
   "gitlens.telemetry.enabled": false,
-  "python.languageServer": "Pylance",
   "C_Cpp.autocompleteAddParentheses": true,
   "python.autoComplete.extraPaths": [
     "C:\\Users\\Ian\\miniconda3\\envs\\CS4243\\Library\\include\\opencv2",
@@ -135,9 +134,6 @@
   // "ocaml.server.duneDiagnostics": true,
   // "ocaml.server.syntaxDocumentation": true,
   // "ocaml.server.extendedHover": true,
-  // "[python]": {
-  //   "editor.defaultFormatter": "ms-python.black-formatter"
-  // }
   "editor.quickSuggestions": {
     "comments": "on",
     "strings": "on"
@@ -231,7 +227,6 @@
   "nvim-ui.nvimColorCustomizationKeys": [
     "statusBar.background"
   ],
-  "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa": "",
   /****** WHICH-KEY SETTINGS *******/
   "whichkey.delay": 0,
   "whichkey.bindings": [
@@ -249,18 +244,27 @@
       "command": "workbench.view.explorer"
     },
     {
-      "key": "n",
-      "name": "Toggle explorer",
-      "when": "!editorTextFocus",
+      "key": "j",
+      "name": "SplitJoin",
       "type": "command",
-      "command": "workbench.action.toggleSidebarVisibility"
+      "when": "editorTextFocus && neovim.mode != insert",
+      "command": "vscode-neovim.send",
+      "args": "<space>j"
+    },
+    /*{
+      "key": "<left>",
+      "name": "Move parameter left",
+      "type": "command",
+      "command": "vscode-neovim.send",
+      "args": "<space><left>"
     },
     {
-      "key": "j",
-      "name": "Join lines",
+      "key": "<right>",
+      "name": "Move parameter right",
       "type": "command",
-      "command": "editor.action.joinLines"
-    },
+      "command": "vscode-neovim.send",
+      "args": "<space><right>"
+    }, */
     {
       "key": "?",
       "name": "Search keybindings",
@@ -269,6 +273,55 @@
     },
     {
       "key": "z",
+      "name": "+Folds",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "M",
+          "name": "Fold all",
+          "type": "command",
+          "command": "editor.foldAll"
+        },
+        {
+          "key": "R",
+          "name": "Unfold all",
+          "type": "command",
+          "command": "editor.unfoldAll"
+        },
+        {
+          "key": "c",
+          "name": "Fold",
+          "type": "command",
+          "command": "editor.fold"
+        },
+        {
+          "key": "C",
+          "name": "Fold recursively",
+          "type": "command",
+          "command": "editor.foldRecursively"
+        },
+        {
+          "key": "o",
+          "name": "Unfold",
+          "type": "command",
+          "command": "editor.unfold"
+        },
+        {
+          "key": "O",
+          "name": "Unfold recursively",
+          "type": "command",
+          "command": "editor.unfoldRecursively"
+        },
+        {
+          "key": "a",
+          "name": "Toggle fold",
+          "type": "command",
+          "command": "editor.toggleFold"
+        }
+      ]
+    },
+    {
+      "key": "Z",
       "name": "Toggle zen mode",
       "type": "command",
       "command": "workbench.action.toggleZenMode"
@@ -703,48 +756,6 @@
       ]
     }
   ],
-  /************** Neovim Fallthrough **************/
-  "vscode-neovim.ctrlKeysForNormalMode": [
-    "a",
-    "c",
-    "d",
-    "e",
-    "i",
-    "m",
-    "o",
-    "r",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-    "/",
-    "h",
-    "j",
-    "k",
-    "l",
-    "]",
-    "right",
-    "left",
-    "up",
-    "down",
-    "backspace",
-    "delete"
-  ],
-  "vscode-neovim.ctrlKeysForInsertMode": [
-    "a",
-    "c",
-    "d",
-    "j",
-    "m",
-    "o",
-    "r",
-    "t",
-    "u",
-    "w"
-  ],
   /****** VSCODE VIM SETTINGS *******/
   "vim.startInInsertMode": false,
   "vim.highlightedyank.enable": true,
@@ -765,10 +776,35 @@
     },
     {
       "before": [
+        "Y"
+      ],
+      "after": [
+        "y",
+        "$"
+      ]
+    },
+    {
+      "before": [
         "<tab>"
       ],
       "commands": [
         "findJump.activate"
+      ]
+    },
+    {
+      "before": [
+        "<C-o>"
+      ],
+      "commands": [
+        "workbench.action.navigateBackward"
+      ]
+    },
+    {
+      "before": [
+        "<C-i>"
+      ],
+      "commands": [
+        "workbench.action.navigateForward"
       ]
     }
   ],
@@ -950,9 +986,35 @@
   "codeium.enableConfig": {
     "*": false
   },
-  "leetcode.workspaceFolder": "/home/ian/.leetcode",
   "editor.minimap.showSlider": "always",
-  "github.copilot.nextEditSuggestions.enabled": true
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "editor.cursorSurroundingLines": 3,
+  "editor.detectIndentation": false,
+  "vue.server.hybridMode": true,
+  "hat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-http-request-post-response.instructions.md": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-http-request-pre-request.instructions.md": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-collections-post-response.instructions.md": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-collections-pre-request.instructions.md": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-folder-post-response.instructions.md": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-folder-pre-request.instructions.md": true,
+    "/tmp/postman-collections-post-response.instructions.md": true,
+    "/tmp/postman-collections-pre-request.instructions.md": true,
+    "/tmp/postman-folder-post-response.instructions.md": true,
+    "/tmp/postman-folder-pre-request.instructions.md": true,
+    "/tmp/postman-http-request-post-response.instructions.md": true,
+    "/tmp/postman-http-request-pre-request.instructions.md": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  // "terminal.integrated.fontFamily": "Cousine Nerd Font"
+  "terminal.integrated.fontFamily": "Cousine Nerd Font Mono"
   // "remote.SSH.useLocalServer": false,
   // "remote.SSH.useExecServer": false,
   // "remote.SSH.enableDynamicForwarding": false,

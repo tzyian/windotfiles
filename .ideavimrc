@@ -18,6 +18,7 @@ set showmode
 set showcmd
 
 " Search options
+set ignorecase
 set smartcase
 set incsearch
 set hlsearch
@@ -51,6 +52,7 @@ Plug 'preservim/nerdtree'
 Plug 'tpope/vim-surround'
 set which-key
 set mini-ai
+set quickscope
 
 " Which-key mappings
 let g:WhichKeyDesc_reloadconfig = "\r Reload IdeaVim configuration"
@@ -67,8 +69,11 @@ sethandler <C-c> x:ide
 " Tab Navigation
 nnoremap <C-n> :tabnext<CR>
 nnoremap <C-p> :tabprevious<CR>
-nnoremap <TAB> :tabnext<CR>
-nnoremap <s-TAB> :tabprevious<CR>
+" nnoremap <TAB> :tabnext<CR>
+" nnoremap <s-TAB> :tabprevious<CR>
+
+" map <C-TAB> <Action>(NextTab)
+" map <C-S-TAB> <Action>(PreviousTab)
 
 " Reset yank to yank to end of line
 nnoremap Y y$
@@ -83,13 +88,16 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Panel Resizing
+map <C-Left> <Action>(TabShiftActions.StretchLeft)
+map <C-Right> <Action>(TabShiftActions.StretchRight)
+
 " Move lines
 map <A-k> <Action>(MoveLineUp)
 map <A-j> <Action>(MoveLineDown)
 map <A-h> <Action>(EditorUnindentSelection)
 map <A-l> <Action>(EditorIndentLineOrSelection)
 
-map <C-Left> <Action>(MaximizeEditorInSplit)
 vmap p P
 
 " map <leader>j <Action>(EditorJoinLines)
@@ -132,7 +140,8 @@ nmap <leader>gt <Action>(GotoTypeDeclaration)
 nmap <leader>gi <Action>(GotoImplementation)
 nmap <leader>gs <Action>(GotoSuperMethod)
 nmap <leader>gT <Action>(GotoTest)
-nmap <leader>gh <Action>(CIDR.Lang.SwitchHeaderSource)
+" nmap <leader>gh <Action>(CIDR.Lang.SwitchHeaderSource)
+nmap <leader>gh <Action>(CallHierarchy)
 nmap gr <Action>(ShowUsages)
 nmap gd <Action>(GotoDeclaration)
 nmap gt <Action>(GotoTypeDeclaration)
@@ -152,9 +161,7 @@ map <leader><Left>  <Action>(MoveElementRight)
 map <leader><Right>  <Action>(MoveElementRight)
 
 " Outline
-" Not working
-" nnoremap <leader>h <action>(CallHierarchy)
-" nnoremap <leader>o <action>(FileStructurePopup)
+nmap <leader>o <action>(FileStructurePopup)
 
 " Disable highlight
 nmap <Esc> :noh<CR>
@@ -162,9 +169,10 @@ nmap <Esc> :noh<CR>
 " Code
 map <leader>cr <Action>(RenameElement)
 map <leader>cq <Action>(Refactorings.QuickListPopupAction)
-map <leader>cf <Action>(ReformatCode) " Also Ctrl-Alt-L
+nmap <leader>cf <Action>(ReformatCode)
 map <leader>co <Action>(OptimizeImports)
 map <leader>ca <Action>(ShowIntentionActions)
+map <leader>ch <Action>(SwitchHeaderSource)
 
 " Git options
 map <leader>hc <Action>(CheckinProject)
@@ -180,9 +188,18 @@ nmap <leader>db <Action>(ToggleLineBreakpoint)
 nmap <leader>de <Action>(EditBreakpoint)
 nmap <leader>dv <Action>(ViewBreakpoints)
 
+" folding
+nmap <leader>zo <Action>(ExpandCollapseToggleAction)
+nmap <leader>zO <Action>(ExpandRegionRecursively)
+nmap <leader>zc <Action>(CollapseRegion)
+nmap <leader>zC <Action>(CollapseRegionRecursively)
+nmap <leader>zM <Action>CollapseAllRegions
+nmap <leader>zR <Action>ExpandAllRegions
+
 " Terminal
 map <leader>t <Action>(ActivateTerminalToolWindow)
 map <c-t> <Action>(Terminal.OpenInTerminal)
+" map <c-t> <Action>(Terminal.OpenInTerminal)
 
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t
