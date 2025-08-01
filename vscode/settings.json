@@ -54,7 +54,6 @@
     "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
     "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
     "php": "php",
-    // "python": "python -u",
     "python": "$pythonPath $fullFileName",
     "perl": "perl",
     "perl6": "perl6",
@@ -117,23 +116,8 @@
   "dotnetAcquisitionExtension.enableTelemetry": false,
   "gitlens.telemetry.enabled": false,
   "C_Cpp.autocompleteAddParentheses": true,
-  "python.autoComplete.extraPaths": [
-    "C:\\Users\\Ian\\miniconda3\\envs\\CS4243\\Library\\include\\opencv2",
-    "./sources/",
-    "C:\\Users\\Ian\\miniconda3\\envs\\CS4243\\Lib\\site-packages",
-    "C:\\Users\\Ian\\miniconda3\\envs\\CS4243\\Lib"
-  ],
-  "python.analysis.extraPaths": [
-    "C:\\Users\\Ian\\miniconda3\\envs\\CS4243\\Library\\include\\opencv2",
-    "./sources/",
-    "C:\\Users\\Ian\\miniconda3\\envs\\CS4243\\Lib\\site-packages",
-    "C:\\Users\\Ian\\miniconda3\\envs\\CS4243\\Lib"
-  ],
   "typescript.suggest.paths": false,
   "javascript.suggest.paths": false,
-  // "ocaml.server.duneDiagnostics": true,
-  // "ocaml.server.syntaxDocumentation": true,
-  // "ocaml.server.extendedHover": true,
   "editor.quickSuggestions": {
     "comments": "on",
     "strings": "on"
@@ -996,18 +980,4 @@
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
   "terminal.integrated.fontFamily": "Cousine Nerd Font Mono",
-  "chat.instructionsFilesLocations": {
-    ".github/instructions": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-collections-post-response.instructions.md": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-collections-pre-request.instructions.md": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-folder-post-response.instructions.md": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-folder-pre-request.instructions.md": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-http-request-post-response.instructions.md": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-http-request-pre-request.instructions.md": true
-  },
-  // "remote.SSH.useLocalServer": false,
-  // "remote.SSH.useExecServer": false,
-  // "remote.SSH.enableDynamicForwarding": false,
-  // "remote.SSH.showLoginTerminal": false,
-  // "remote.SSH.enableRemoteCommand": false
 }
