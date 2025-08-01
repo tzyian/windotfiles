@@ -796,7 +796,7 @@
         "<C-o>"
       ],
       "commands": [
-        "workbench.action.navigateBackward"
+        "workbench.action.navigateBack"
       ]
     },
     {
@@ -983,29 +983,11 @@
     "workbench.action.tasks.configureTaskRunner",
     "workbench.action.tasks.runTask"
   ],
-  "codeium.enableConfig": {
-    "*": false
-  },
   "editor.minimap.showSlider": "always",
   "github.copilot.nextEditSuggestions.enabled": true,
   "editor.cursorSurroundingLines": 3,
   "editor.detectIndentation": false,
   "vue.server.hybridMode": true,
-  "hat.instructionsFilesLocations": {
-    ".github/instructions": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-http-request-post-response.instructions.md": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-http-request-pre-request.instructions.md": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-collections-post-response.instructions.md": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-collections-pre-request.instructions.md": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-folder-post-response.instructions.md": true,
-    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-folder-pre-request.instructions.md": true,
-    "/tmp/postman-collections-post-response.instructions.md": true,
-    "/tmp/postman-collections-pre-request.instructions.md": true,
-    "/tmp/postman-folder-post-response.instructions.md": true,
-    "/tmp/postman-folder-pre-request.instructions.md": true,
-    "/tmp/postman-http-request-post-response.instructions.md": true,
-    "/tmp/postman-http-request-pre-request.instructions.md": true
-  },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -1013,8 +995,16 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "typescript.updateImportsOnFileMove.enabled": "always",
-  // "terminal.integrated.fontFamily": "Cousine Nerd Font"
-  "terminal.integrated.fontFamily": "Cousine Nerd Font Mono"
+  "terminal.integrated.fontFamily": "Cousine Nerd Font Mono",
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-collections-post-response.instructions.md": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-collections-pre-request.instructions.md": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-folder-post-response.instructions.md": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-folder-pre-request.instructions.md": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-http-request-post-response.instructions.md": true,
+    "C:\\Users\\Ian\\AppData\\Local\\Temp\\postman-http-request-pre-request.instructions.md": true
+  },
   // "remote.SSH.useLocalServer": false,
   // "remote.SSH.useExecServer": false,
   // "remote.SSH.enableDynamicForwarding": false,

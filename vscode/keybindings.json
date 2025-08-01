@@ -270,4 +270,9 @@
     "command": "whichkey.show",
     "when": "(editorTextFocus && neovim.mode == 'normal') || (editorTextFocus && neovim.mode == 'visual')"
   },
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalFocus && terminalIsOpen"
+  },
 ]

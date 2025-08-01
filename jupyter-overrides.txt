@@ -1,0 +1,52 @@
+// Jupyter keyboard shortcuts
+{
+  "@jupyterlab/apputils-extension:themes": {
+    "theme": "JupyterLab Dark"
+  },
+  "@jupyterlab/shortcuts-extension:shortcuts": {
+        "shortcuts": [
+      {
+        "command": "runmenu:restart-and-run-all",
+        "keys": [
+          "Ctrl Shift R"
+        ],
+        "selector": "[data-jp-code-runner]"
+      },
+      {
+        "command": "runmenu:run-all",
+        "keys": [
+          "Ctrl Alt R"
+        ],
+        "selector": "[data-jp-code-runner]"
+      },
+      {
+        "command": "notebook:run-all-cells",
+        "keys": [
+          "Ctrl Alt E"
+        ],
+        "selector": "[data-jp-code-runner]"
+      },
+      {
+        "command": "notebook:run-all-above",
+        "keys": [
+          "Ctrl U"
+        ],
+        "selector": "[data-jp-code-runner]"
+      },
+      {
+        "command": "notebook:restart-and-run-to-selected",
+        "keys": [
+          "Ctrl Shift U"
+        ],
+        "selector": "[data-jp-code-runner]"
+      },
+      {
+        "command": "notebook:run-all-below",
+        "keys": [
+          "Ctrl D"
+        ],
+        "selector": "[data-jp-code-runner]"
+      }
+    ]
+  }
+}

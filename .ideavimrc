@@ -61,7 +61,8 @@ let g:WhichKeyDesc_reloadconfig = "\r Reload IdeaVim configuration"
 " ======================= Key Mappings =======================
 " ============================================================
 
-WhichKeyDesc_reloadconfig <C-s> a:ide
+sethandler <C-s> a:ide
+sethandler <C-a> a:ide
 sethandler <C-v> a:ide
 sethandler <C-f> a:ide
 sethandler <C-c> x:ide
@@ -168,7 +169,7 @@ nmap <Esc> :noh<CR>
 
 " Code
 map <leader>cr <Action>(RenameElement)
-map <leader>cq <Action>(Refactorings.QuickListPopupAction)
+map <leader>cR <Action>(Refactorings.QuickListPopupAction)
 nmap <leader>cf <Action>(ReformatCode)
 map <leader>co <Action>(OptimizeImports)
 map <leader>ca <Action>(ShowIntentionActions)
@@ -178,6 +179,7 @@ map <leader>ch <Action>(SwitchHeaderSource)
 map <leader>hc <Action>(CheckinProject)
 map <leader>hs <Action>(ActivateVersionControlToolWindow)
 map <leader>hb <Action>(Git.Branches)
+map <leader>hp <Action>(VcsShowCurrentChangeMarker)
 nmap ]h <Action>(VcsShowNextChangeMarker)
 nmap [h <Action>(VcsShowPrevChangeMarker)
 
@@ -215,3 +217,4 @@ map <c-t> <Action>(Terminal.OpenInTerminal)
 "map \b <Action>(ToggleLineBreakpoint)
 
 nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+
