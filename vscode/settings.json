@@ -6,13 +6,30 @@
   "code-runner.enableAppInsights": false,
   "github.copilot.enable": {
     "*": true,
-    "plaintext": true,
-    "markdown": true,
     "scminput": false,
     "jsonc": false,
-    "haskell": true
+    "elixir": false
   },
-  "haskell.manageHLS": "GHCup",
+  "python.analysis.typeCheckingMode": "standard",
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    }
+  },
+  "vue.server.hybridMode": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -45,7 +62,7 @@
     "pdc": "linux",
     "xlog": "linux"
   },
-  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.defaultProfile.windows": "Command Prompt",
   "code-runner.executorMap": {
     "javascript": "node",
     "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
@@ -204,6 +221,7 @@
   /************ VSCODE NVIM **************/
   "vscode-neovim.useWSL": true,
   "vscode-neovim.neovimExecutablePaths.linux": "/opt/nvim-linux-x86_64/bin/nvim",
+  "vscode-neovim.neovimExecutablePaths.darwin": "/opt/homebrew/bin/nvim",
   "nvim-ui.nvimColorNormal": "#023b1a",
   "nvim-ui.nvimColorInsert": "#023557",
   "nvim-ui.nvimColorVisual": "#460157",
@@ -970,14 +988,24 @@
   "editor.minimap.showSlider": "always",
   "github.copilot.nextEditSuggestions.enabled": true,
   "editor.cursorSurroundingLines": 3,
-  "editor.detectIndentation": false,
-  "vue.server.hybridMode": true,
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "typescript.updateImportsOnFileMove.enabled": "always",
   "terminal.integrated.fontFamily": "Cousine Nerd Font Mono",
+  "chat.instructionsFilesLocations": {
+    ".github/instructions": true,
+  },
+  "notebook.editorOptionsCustomizations": {
+    "editor.tabSize": 2,
+    "editor.indentSize": 2,
+    "editor.insertSpaces": true
+  },
+  "editor.indentSize": "tabSize",
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "remote.autoForwardPortsSource": "hybrid",
+  "Prettier-SQL.SQLFlavourOverride": "postgresql",
+  "postman.mcp.notifications.postmanMCP": false,
+  "chat.tools.terminal.autoApprove": {
+    "npx": true,
+    "netstat": true,
+    "isort": true,
+  },
 }

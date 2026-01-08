@@ -79,7 +79,7 @@
     // Decrease editor height
     "key": "ctrl+up",
     "command": "workbench.action.decreaseViewHeight",
-    "when": "editorTextFocus && (vim.active || neovim.mode == 'normal')"
+    "when": "(editorTextFocus && vim.active) || (editorTextFocus && neovim.mode == 'normal')"
   },
   {
     // Increase editor height
@@ -91,15 +91,14 @@
     // Decrease editor width
     "key": "ctrl+left",
     "command": "workbench.action.decreaseViewWidth",
-    "when": "editorTextFocus && (vim.active || neovim.mode == 'normal')"
+    "when": "(editorTextFocus && vim.active) || (editorTextFocus && neovim.mode == 'normal')"
   },
   {
     // Increase editor width
     "key": "ctrl+right",
     "command": "workbench.action.increaseViewWidth",
-    "when": "editorTextFocus && (vim.active || neovim.mode == 'normal')"
+    "when": "(editorTextFocus && vim.active) || (editorTextFocus && neovim.mode == 'normal')"
   },
-  // vscode vim binding
   {
     // enable copy
     "key": "ctrl+c",
@@ -263,7 +262,7 @@
   {
     "key": "q",
     "command": "workbench.action.closeSidebar",
-    "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer'"
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.explorer' && !inputFocus"
   },
   {
     "key": "space",
