@@ -51,18 +51,23 @@
     "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
   },
   {
-    "key": "ctrl+pagedown",
-    "command": "-workbench.action.terminal.focusNext",
-    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
-  },
-  {
     "key": "ctrl+shift+tab",
     "command": "workbench.action.terminal.focusPrevious",
     "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
   },
   {
+    "key": "ctrl+pagedown",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "alt+up",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
     "key": "ctrl+pageup",
-    "command": "-workbench.action.terminal.focusPrevious",
+    "command": "workbench.action.terminal.focusPrevious",
     "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
   },
   {
@@ -79,25 +84,25 @@
     // Decrease editor height
     "key": "ctrl+up",
     "command": "workbench.action.decreaseViewHeight",
-    "when": "(editorTextFocus && vim.active) || (editorTextFocus && neovim.mode == 'normal')"
+    "when": "editorTextFocus && neovim.mode == 'normal' || editorTextFocus && vim.mode == 'Normal'"
   },
   {
     // Increase editor height
     "key": "ctrl+down",
     "command": "workbench.action.increaseViewHeight",
-    "when": "editorTextFocus && (vim.active || neovim.mode == 'normal')"
+    "when": "editorTextFocus && neovim.mode == 'normal' || editorTextFocus && vim.mode == 'Normal'"
   },
   {
     // Decrease editor width
     "key": "ctrl+left",
     "command": "workbench.action.decreaseViewWidth",
-    "when": "(editorTextFocus && vim.active) || (editorTextFocus && neovim.mode == 'normal')"
+    "when": "editorTextFocus && neovim.mode == 'normal' || editorTextFocus && vim.mode == 'Normal'"
   },
   {
     // Increase editor width
     "key": "ctrl+right",
     "command": "workbench.action.increaseViewWidth",
-    "when": "(editorTextFocus && vim.active) || (editorTextFocus && neovim.mode == 'normal')"
+    "when": "editorTextFocus && neovim.mode == 'normal' || editorTextFocus && vim.mode == 'Normal'"
   },
   {
     // enable copy
@@ -206,7 +211,7 @@
   {
     "key": "tab",
     "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
+    "when": "inQuickOpen && !whichkeyVisible"
   },
   {
     "key": "shift+tab",
@@ -267,11 +272,128 @@
   {
     "key": "space",
     "command": "whichkey.show",
-    "when": "(editorTextFocus && neovim.mode == 'normal') || (editorTextFocus && neovim.mode == 'visual')"
+    "when": "editorTextFocus && ((neovim.init && (neovim.mode == 'normal' || neovim.mode == 'visual' || neovim.mode == 'visualline')) || (vim.active && vim.mode != 'Insert'))"
   },
   {
     "key": "ctrl+shift+t",
     "command": "workbench.action.terminal.new",
     "when": "terminalFocus && terminalIsOpen"
   },
+  // Terminal navigation between panes and groups
+  {
+    "key": "ctrl+up",
+    "command": "workbench.action.terminal.focusPrevious",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "alt+down",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus && terminalHasBeenCreated && terminalSplitPaneActive || terminalFocus && terminalProcessSupported && terminalSplitPaneActive"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus && terminalHasBeenCreated && terminalSplitPaneActive || terminalFocus && terminalProcessSupported && terminalSplitPaneActive"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus && terminalHasBeenCreated && !terminalEditorFocus || terminalFocus && terminalProcessSupported && !terminalEditorFocus"
+  },
+  // Prevent neovim from hijacking z keys
+  {
+    "key": "z m",
+    "command": "list.collapseAll",
+    "when": "listFocus && !inputFocus && !treestickyScrollFocused"
+  },
+  {
+    "key": "z shift+m",
+    "command": "-list.collapseAll",
+    "when": "!editorTextFocus && !inputFocus"
+  },
+  {
+    "key": "z c",
+    "command": "list.collapse",
+    "when": "listFocus && treeElementCanCollapse && !inputFocus && !treestickyScrollFocused || listFocus && treeElementHasParent && !inputFocus && !treestickyScrollFocused"
+  },
+  {
+    "key": "z c",
+    "command": "-list.collapse",
+    "when": "!editorTextFocus && !inputFocus"
+  },
+  {
+    "key": "z shift+c",
+    "command": "list.collapseAllToFocus",
+    "when": "listFocus && treeElementCanCollapse && !inputFocus && !treestickyScrollFocused || listFocus && treeElementHasParent && !inputFocus && !treestickyScrollFocused"
+  },
+  {
+    "key": "z shift+c",
+    "command": "-list.collapseAllToFocus",
+    "when": "!editorTextFocus && !inputFocus"
+  },
+  {
+    "key": "z m",
+    "command": "list.collapseAll",
+    "when": "listFocus && !inputFocus && !treestickyScrollFocused"
+  },
+  {
+    "key": "z m",
+    "command": "-list.collapseAll",
+    "when": "!editorTextFocus && !inputFocus"
+  },
+  {
+    "key": "z o",
+    "command": "list.expand",
+    "when": "listFocus && treeElementCanExpand && !inputFocus && !treestickyScrollFocused || listFocus && treeElementHasChild && !inputFocus && !treestickyScrollFocused"
+  },
+  {
+    "key": "z shift+o",
+    "command": "-list.expand",
+    "when": "!editorTextFocus && !inputFocus"
+  },
+  {
+    "key": "z o",
+    "command": "list.expand",
+    "when": "listFocus && treeElementCanExpand && !inputFocus && !treestickyScrollFocused || listFocus && treeElementHasChild && !inputFocus && !treestickyScrollFocused"
+  },
+  {
+    "key": "z o",
+    "command": "-list.expand",
+    "when": "!editorTextFocus && !inputFocus"
+  },
+  {
+    "key": "z a",
+    "command": "list.toggleExpand",
+    "when": "listFocus && !inputFocus && !treestickyScrollFocused"
+  },
+  {
+    "key": "z a",
+    "command": "-list.toggleExpand",
+    "when": "!editorTextFocus && !inputFocus"
+  },
+  {
+    "key": "z shift+a",
+    "command": "list.toggleExpand",
+    "when": "listFocus && !inputFocus && !treestickyScrollFocused"
+  },
+  {
+    "key": "z shift+a",
+    "command": "-list.toggleExpand",
+    "when": "!editorTextFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "-workbench.action.terminal.focusFind",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+alt+f",
+    "command": "workbench.action.terminal.focusFind",
+    "when": "terminalFocus"
+  }
 ]
