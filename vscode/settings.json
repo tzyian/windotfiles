@@ -182,7 +182,8 @@
     "strings": "on"
   },
   "editor.tabSize": 2,
-  "editor.wordWrap": "on",
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 100
   "breadcrumbs.enabled": true,
   "explorer.fileNesting.patterns": {
     "*.db": "${capture}.${extname}-*",
@@ -222,6 +223,7 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "git.autofetch": true,
   "gitlens.ai.model": "gitkraken",
+  "gitlens.ai.gitkraken.model": "gemini:gemini-2.5-flash",
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.telemetry.enabled": false,
@@ -299,15 +301,15 @@
         "editor.action.dirtydiff.next"
       ]
     },
-    {
-      "before": [
-        "g",
-        "h"
-      ],
-      "commands": [
-        "editor.action.showDefinitionPreviewHover"
-      ]
-    },
+    // {
+    //   "before": [
+    //     "g",
+    //     "h"
+    //   ],
+    //   "commands": [
+    //     "editor.action.showDefinitionPreviewHover"
+    //   ]
+    // },
     {
       "before": [
         "g",
@@ -540,6 +542,18 @@
       "command": "whichkey.searchBindings"
     },
     {
+      "key": "u",
+      "name": "Timeline (Undotree)",
+      "type": "command",
+      "command": "timeline.focus"
+    },
+    {
+      "key": "o",
+      "name": "Symbols / Outline",
+      "type": "command",
+      "command": "outline.focus"
+    },
+    {
       "key": "z",
       "name": "+Folds",
       "type": "bindings",
@@ -612,6 +626,12 @@
           "command": "workbench.action.showAllEditors"
         },
         {
+          "key": "d",
+          "name": "Close current editor",
+          "type": "command",
+          "command": "workbench.action.closeActiveEditor"
+        },
+        {
           "key": "D",
           "name": "Close other editors",
           "type": "command",
@@ -622,6 +642,37 @@
           "name": "Reopen closed editor",
           "type": "command",
           "command": "workbench.action.reopenClosedEditor"
+        },
+        {
+          "key": "p",
+          "name": "Pin editor",
+          "type": "command",
+          "command": "workbench.action.pinEditor"
+        },
+        {
+          "key": "p",
+          "name": "Unpin editor",
+          "when": "activeEditorIsPinned",
+          "type": "command",
+          "command": "workbench.action.unpinEditor"
+        },
+        {
+          "key": "P",
+          "name": "Close unpinned editors",
+          "type": "command",
+          "command": "workbench.action.closeUnmodifiedEditors"
+        },
+        {
+          "key": "L",
+          "name": "Close editors to the right",
+          "type": "command",
+          "command": "workbench.action.closeEditorsToTheRight"
+        },
+        {
+          "key": "H",
+          "name": "Close editors to the left",
+          "type": "command",
+          "command": "workbench.action.closeEditorsToTheLeft"
         }
       ]
     },
@@ -645,6 +696,12 @@
         {
           "key": "S",
           "name": "Stop debug",
+          "type": "command",
+          "command": "workbench.action.debug.stop"
+        },
+        {
+          "key": "x",
+          "name": "Terminate debug",
           "type": "command",
           "command": "workbench.action.debug.stop"
         },
@@ -709,6 +766,12 @@
           "command": "workbench.debug.action.toggleRepl"
         },
         {
+          "key": "l",
+          "name": "Debug Console / Last result",
+          "type": "command",
+          "command": "workbench.debug.action.toggleRepl"
+        },
+        {
           "key": "w",
           "name": "Focus on watch window",
           "type": "command",
@@ -724,14 +787,32 @@
     },
     {
       "key": "q",
-      "name": "+Errors",
+      "name": "+Diagnostics/Errors",
       "type": "bindings",
       "bindings": [
         {
           "key": "q",
-          "name": "List errors",
+          "name": "List errors / problems",
           "type": "command",
           "command": "workbench.actions.view.problems"
+        },
+        {
+          "key": "s",
+          "name": "Symbols / Outline",
+          "type": "command",
+          "command": "outline.focus"
+        },
+        {
+          "key": "t",
+          "name": "Todo Comments",
+          "type": "command",
+          "command": "todo-tree.filter"
+        },
+        {
+          "key": "l",
+          "name": "LSP References / Definitions",
+          "type": "command",
+          "command": "references-view.find"
         }
       ]
     },
@@ -775,6 +856,55 @@
           "name": "Find symbol in workspace",
           "type": "command",
           "command": "workbench.action.showAllSymbols"
+        },
+        {
+          "key": "d",
+          "name": "Find diagnostics / problems",
+          "type": "command",
+          "command": "workbench.actions.view.problems"
+        },
+        {
+          "key": "q",
+          "name": "Quick open",
+          "type": "command",
+          "command": "workbench.action.quickOpen"
+        },
+        {
+          "key": "t",
+          "name": "Todo comments",
+          "type": "command",
+          "command": "todo-tree.filter"
+        },
+        {
+          "key": "c",
+          "name": "Open settings.json",
+          "type": "command",
+          "command": "workbench.action.openSettingsJson"
+        },
+        {
+          "key": ":",
+          "name": "Command history / Show commands",
+          "type": "command",
+          "command": "workbench.action.showCommands"
+        },
+        {
+          "key": "h",
+          "name": "+Git",
+          "type": "bindings",
+          "bindings": [
+            {
+              "key": "f",
+              "name": "Find git files",
+              "type": "command",
+              "command": "workbench.action.quickOpen"
+            },
+            {
+              "key": "c",
+              "name": "Search git commits",
+              "type": "command",
+              "command": "gitlens.showCommitSearch"
+            }
+          ]
         }
       ]
     },
@@ -790,10 +920,10 @@
           "command": "editor.action.rename"
         },
         {
-          "key": "h",
-          "name": "Switch C++ Source/Header",
+          "key": "a",
+          "name": "Code action",
           "type": "command",
-          "command": "clangd.switchheadersource"
+          "command": "editor.action.codeAction"
         },
         {
           "key": "f",
@@ -802,16 +932,40 @@
           "command": "editor.action.formatDocument"
         },
         {
-          "key": "R",
-          "name": "Replace in files",
+          "key": "h",
+          "name": "Switch C++ Source/Header",
           "type": "command",
-          "command": "editor.action.codeAction"
+          "command": "clangd.switchheadersource"
         },
         {
-          "key": "a",
-          "name": "Code action",
+          "key": "c",
+          "name": "Toggle Sticky Scroll (Context)",
           "type": "command",
-          "command": "editor.action.codeAction"
+          "command": "editor.action.toggleStickyScroll"
+        },
+        {
+          "key": "b",
+          "name": "Toggle Breadcrumbs",
+          "type": "command",
+          "command": "breadcrumbs.toggle"
+        },
+        {
+          "key": "i",
+          "name": "Toggle Inlay Hints",
+          "type": "command",
+          "command": "editor.action.toggleInlayHints"
+        },
+        {
+          "key": "l",
+          "name": "Toggle Code Lens",
+          "type": "command",
+          "command": "codelens.showLensesInCurrentEditor"
+        },
+        {
+          "key": "q",
+          "name": "Toggle Errors/Problems",
+          "type": "command",
+          "command": "workbench.actions.view.problems"
         }
       ]
     },
@@ -820,6 +974,24 @@
       "name": "+Go",
       "type": "bindings",
       "bindings": [
+        {
+          "key": "d",
+          "name": "Go to definition",
+          "type": "command",
+          "command": "editor.action.revealDefinition"
+        },
+        {
+          "key": "D",
+          "name": "Go to type definition",
+          "type": "command",
+          "command": "editor.action.goToTypeDefinition"
+        },
+        {
+          "key": "t",
+          "name": "Peek type definition",
+          "type": "command",
+          "command": "editor.action.peekTypeDefinition"
+        },
         {
           "key": "r",
           "name": "Go to references",
@@ -833,16 +1005,97 @@
           "command": "references-view.find"
         },
         {
-          "key": "d",
-          "name": "Go to definition",
-          "type": "command",
-          "command": "editor.action.revealDefinition"
-        },
-        {
           "key": "i",
-          "name": " Go to implementation",
+          "name": "Go to implementation",
           "type": "command",
           "command": "editor.action.goToImplementation"
+        },
+        {
+          "key": "n",
+          "name": "Show incoming calls",
+          "type": "command",
+          "command": "editor.showCallHierarchy"
+        },
+        {
+          "key": "o",
+          "name": "Show outgoing calls",
+          "type": "command",
+          "command": "editor.action.showOutgoingCalls"
+        }
+      ]
+    },
+    {
+      "key": "p",
+      "name": "+Preview/UI",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "p",
+          "name": "Markdown preview",
+          "type": "command",
+          "command": "markdown.extension.togglePreview"
+        },
+        {
+          "key": "v",
+          "name": "Toggle CSV View",
+          "type": "command",
+          "command": "edit-csv.edit"
+        },
+        {
+          "key": "z",
+          "name": "Toggle Zen Mode",
+          "type": "command",
+          "command": "workbench.action.toggleZenMode"
+        }
+      ]
+    },
+    {
+      "key": "r",
+      "name": "+Run",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "r",
+          "name": "Run Code",
+          "type": "command",
+          "command": "code-runner.run"
+        },
+        {
+          "key": "c",
+          "name": "Stop Code Run",
+          "type": "command",
+          "command": "code-runner.stop"
+        },
+        {
+          "key": "t",
+          "name": "Toggle Output Panel",
+          "type": "command",
+          "command": "workbench.action.output.toggleOutput"
+        }
+      ]
+    },
+    {
+      "key": "s",
+      "name": "+Session",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "s",
+          "name": "Save Workspace",
+          "type": "command",
+          "command": "workbench.action.saveWorkspaceAs"
+        },
+        {
+          "key": "e",
+          "name": "Open Recent Workspace",
+          "type": "command",
+          "command": "workbench.action.openRecent"
+        },
+        {
+          "key": "c",
+          "name": "Reload Window",
+          "type": "command",
+          "command": "workbench.action.reloadWindow"
         }
       ]
     },
@@ -982,7 +1235,7 @@
     },
     {
       "key": "h",
-      "name": "Git Hunk",
+      "name": "+Git Hunk",
       "type": "bindings",
       "bindings": [
         {
@@ -998,10 +1251,22 @@
           "command": "git.stageSelectedRanges"
         },
         {
+          "key": "S",
+          "name": "Stage file",
+          "type": "command",
+          "command": "git.stage"
+        },
+        {
           "key": "u",
           "name": "Unstage range",
           "type": "command",
           "command": "git.unstageSelectedRanges"
+        },
+        {
+          "key": "U",
+          "name": "Unstage file",
+          "type": "command",
+          "command": "git.unstage"
         },
         {
           "key": "r",
@@ -1010,8 +1275,14 @@
           "command": "git.revertSelectedRanges"
         },
         {
+          "key": "R",
+          "name": "Clean / Discard changes",
+          "type": "command",
+          "command": "git.clean"
+        },
+        {
           "key": "p",
-          "name": "Preview",
+          "name": "Preview hunk inline",
           "type": "command",
           "command": "editor.action.dirtydiff.next"
         },
@@ -1022,13 +1293,31 @@
           "command": "workbench.action.editor.nextChange"
         },
         {
-          "key": "p",
+          "key": "N",
           "name": "Previous hunk",
           "type": "command",
           "command": "workbench.action.editor.previousChange"
+        },
+        {
+          "key": "b",
+          "name": "Toggle line blame",
+          "type": "command",
+          "command": "gitlens.toggleLineBlame"
+        },
+        {
+          "key": "B",
+          "name": "Toggle file blame",
+          "type": "command",
+          "command": "gitlens.toggleFileBlame"
+        },
+        {
+          "key": "q",
+          "name": "Show git changes in sidebar",
+          "type": "command",
+          "command": "workbench.view.scm"
         }
       ]
-    },
+    }
   ],
   "window.openFilesInNewWindow": "default",
   "window.openFoldersInNewWindow": "on",
@@ -1042,5 +1331,4 @@
   },
   "workbench.colorTheme": "Dark Modern",
   /************** OTHER SETTINGS **************/
-  "gitlens.ai.gitkraken.model": "gemini:gemini-2.5-flash"
 }
