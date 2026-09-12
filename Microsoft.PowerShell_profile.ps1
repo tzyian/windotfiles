@@ -1,6 +1,7 @@
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 Set-Alias lg lazygit
+Set-Alias hr herdr
 
 function y
 {
@@ -69,7 +70,6 @@ function cleancache {
 	npm cache clean --force
 	pnpm store prune
 	uv cache clean
-	pip cache purge
 	scoop cleanup -k *
 }
 # Invoke-Expression (&starship init powershell)
