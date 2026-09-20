@@ -1317,6 +1317,110 @@
           "command": "workbench.view.scm"
         }
       ]
+    },
+    {
+      "key": "m",
+      "name": "+Bookmarks",
+      "type": "bindings",
+      "bindings": [
+        {
+          "key": "m",
+          "name": "Toggle mark",
+          "type": "command",
+          "command": "bookmarks.toggle"
+        },
+        {
+          "key": "l",
+          "name": "Toggle labeled mark",
+          "type": "command",
+          "command": "bookmarks.toggleLabeled"
+        },
+        {
+          "key": "j",
+          "name": "Jump to next mark",
+          "type": "command",
+          "command": "bookmarks.jumpToNext"
+        },
+        {
+          "key": "k",
+          "name": "Jump to previous mark",
+          "type": "command",
+          "command": "bookmarks.jumpToPrevious"
+        },
+        {
+          "key": "]",
+          "name": "Jump to next mark",
+          "type": "command",
+          "command": "bookmarks.jumpToNext"
+        },
+        {
+          "key": "[",
+          "name": "Jump to previous mark",
+          "type": "command",
+          "command": "bookmarks.jumpToPrevious"
+        },
+        {
+          "key": "b",
+          "name": "List buffer/file bookmarks",
+          "type": "command",
+          "command": "bookmarks.list"
+        },
+        {
+          "key": "a",
+          "name": "List all bookmarks",
+          "type": "command",
+          "command": "bookmarks.listFromAllFiles"
+        },
+        {
+          "key": "c",
+          "name": "Clear buffer bookmarks",
+          "type": "command",
+          "command": "bookmarks.clear"
+        },
+        {
+          "key": "C",
+          "name": "Clear all bookmarks",
+          "type": "command",
+          "command": "bookmarks.clearFromAllFiles"
+        },
+        {
+          "key": "e",
+          "name": "Export bookmarks",
+          "type": "command",
+          "command": "bookmarks.export"
+        },
+        {
+          "key": "s",
+          "name": "+Selection",
+          "type": "bindings",
+          "bindings": [
+            {
+              "key": "l",
+              "name": "Select bookmarked lines",
+              "type": "command",
+              "command": "bookmarks.selectLines"
+            },
+            {
+              "key": "j",
+              "name": "Expand selection to next mark",
+              "type": "command",
+              "command": "bookmarks.expandSelectionToNext"
+            },
+            {
+              "key": "k",
+              "name": "Expand selection to previous mark",
+              "type": "command",
+              "command": "bookmarks.expandSelectionToPrevious"
+            },
+            {
+              "key": "s",
+              "name": "Shrink selection",
+              "type": "command",
+              "command": "bookmarks.shrinkSelection"
+            }
+          ]
+        }
+      ]
     }
   ],
   "window.openFilesInNewWindow": "default",
